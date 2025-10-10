@@ -1,0 +1,94 @@
+/* General Button style */
+.button {
+    background-color: #dc2d27;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: darkred;
+}
+
+.button:focus {
+    outline: none;
+    background-color: darkred;
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+
+/*header background colour*/
+#header {
+    background-color: #208188;
+    color: white;
+}
+
+/*anchor link text colours*/
+nav a {
+    color: white;
+}
+
+
+/*background colour for anchor elements*/
+nav ul li {
+    background-color: blue;
+}
+
+
+.link {
+    text-decoration: none;
+    color: blue;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+#job-card-1, #job-card-2 {
+    background-color: #fff3dd;
+}
+
+/* Perks and benefits section Styles */
+#perks-and-benefits {
+    /* background: orange; */
+}
+
+/* Footer section Styles */
+
+
+#footer-navigation ul li a {
+    color: blue;
+    margin: 20px;
+    text-decoration: none;
+}
+
+#footer-navigation ul li a:hover {
+    text-decoration: underline;
+}
+
+#intro {
+    background-color: white;
+}
+/*altering #intro*/
+
+/*altering #IT*/
+
+/*making background of fieldset #IT solid white*/
+#govit {
+    background-color: white;
+}
+
+/*altering #extrainfo*/
+
+/*making background of fieldset #extrainfo solid white*/
+#extrainfo {
+    background-color: white;
+}
+/*altering #extrainfo*/

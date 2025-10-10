@@ -1,0 +1,108 @@
+/* General page settings styles */
+h1 {
+    font-size: 52px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+li {
+    font-size: 18px;
+    padding: 4px;
+}
+
+.section-header {
+    padding: 20px;
+}
+
+
+/*changing government website name font*/
+header h2 {
+    font-family: calibri;
+}
+
+/*changing text font of anchor tags in the navigation menu*/
+nav ul li {
+    font-family: calibri sans-serif;
+}
+
+
+aside li {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+#career-opportunities-text {
+    margin: 20px;
+}
+
+
+
+dl dt {
+    font-size: 22px;
+}
+
+dl dd {
+    font-size: 18px;
+}
+
+#quotes dl dt {
+    font-size: 24px;
+}
+
+#quotes dl dd {
+    font-size: 20px;
+    list-style-type: none;
+}
+
+#quotes .member {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+
+.profile-container ul dl dd {
+    font-size: 18px;
+}
+
+
+
+/*changing font of id #entry*/
+#entry {
+    font-family: calibri;
+}
+
+/*changing font and size of id #introduction*/
+#introduction {
+    font-family: calibri;
+    font-size: 20px;
+}
+
+/*changing the font size of fieldset id #intro*/
+#intro {
+    font-size: 20px;
+}
+
+/*changing font size of fieldset id #govit*/
+#govit {
+    font-size: 20px;
+}
+
+/*changing font size of fieldset if #extrainfo*/
+#extrainfo {
+    font-size: 20px;
+}
