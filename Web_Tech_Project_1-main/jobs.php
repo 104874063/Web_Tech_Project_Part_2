@@ -32,17 +32,10 @@ Accessibility best practices -->
         
         <section id="header">
             <header>
-                <div class="logotitle">
-                    <a href="#homepage"><img id="logo" src="/Web_Tech_Project_1/images/Logo.png" alt="Logo of the company, Swinburne Government Association" class="logo"></a>
-                    <h2>Swinburne Government Association</h2>
-                </div>
+                <?php include 'assets/logo.inc'; ?>
             </header>
             <nav>
-                <ul>
-                    <li id="id1"><a id="careeropportunities" href="/Web_Tech_Project_1/index.php">Index</a></li>
-                    <li id="id2"><a id="applications" href="/Web_Tech_Project_1/apply.php">Applications</a></li>
-                    <li id="id3"><a id="aboutourteam" href="/Web_Tech_Project_1/about.php">About our team</a></li>
-                </ul>
+                <?php include 'assets/header.inc'; ?>
             </nav>
         </section>
         
@@ -92,7 +85,7 @@ Accessibility best practices -->
 
             <div>
                 <!-- Image from https://www.freepik.com/free-vector/hand-drawn-working-environment-template_111676760.htm#fromView=search&page=1&position=7&uuid=9ef247b9-3f33-46f2-95e1-ccdd397018f4&query=Office+collaboration+illustration -->
-                <img src="/Web_Tech_Project_1/images/office-collaboration.png" alt="A illustration of 4 people working together in a office environment">
+                <img src="images/office-collaboration.png" alt="A illustration of 4 people working together in a office environment">
             </div>
         </section>
 
@@ -111,7 +104,7 @@ Accessibility best practices -->
             <div class="cards-container">
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/reward_3400745?term=motivation&page=1&position=8&origin=search&related_id=3400745 -->
-                    <img src="/Web_Tech_Project_1/images/reward.png" alt="A icon of a person going up to the top to reach a goal" class="icon">
+                    <img src="images/reward.png" alt="A icon of a person going up to the top to reach a goal" class="icon">
 
                     <div class="container">
                         <h3>Motivation & Drive</h3>
@@ -122,7 +115,7 @@ Accessibility best practices -->
 
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/hand-shake_493808?term=handshake&page=1&position=1&origin=search&related_id=493808 -->
-                    <img src="/Web_Tech_Project_1/images/hand-shake.png" alt="A icon of a handshakes" class="icon">
+                    <img src="images/hand-shake.png" alt="A icon of a handshakes" class="icon">
 
                     <div class="container">
                         <h3>Teamwork</h3>
@@ -133,7 +126,7 @@ Accessibility best practices -->
                 <!-- Row 2 -->
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/communication_1264685?term=communication&page=1&position=9&origin=search&related_id=1264685 -->
-                    <img src="/Web_Tech_Project_1/images/communication.png" alt="A icon on a group communicating with one another" class="icon">
+                    <img src="images/communication.png" alt="A icon on a group communicating with one another" class="icon">
 
                     <div class="container">
                         <h3>Communication</h3>
@@ -144,7 +137,7 @@ Accessibility best practices -->
 
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/problem-solving-skills_13441816?term=problem+solving&related_id=13441816 -->
-                    <img src="/Web_Tech_Project_1/images/problem-solving-skills.png" alt="A icon of a puzzle lightbulb and a hand holding the last piece" class="icon">
+                    <img src="images/problem-solving-skills.png" alt="A icon of a puzzle lightbulb and a hand holding the last piece" class="icon">
 
                     <div class="container">
                         <h3>Problem-Solving Skills</h3>
@@ -220,7 +213,7 @@ Accessibility best practices -->
                         <p>$90,000 - $100,000</p>
 
                         <!-- Button -->
-                        <a href="/Web_Tech_Project_1/apply.html" class="button" aria-label="Apply for Data Analyst Job Button">
+                        <a href="apply.php" class="button" aria-label="Apply for Data Analyst Job Button">
                             Apply Now
                         </a>
                         
@@ -282,7 +275,7 @@ Accessibility best practices -->
                         <p>$90,000 - $100,000</p>
 
                         <!-- Button -->
-                        <a href="/Web_Tech_Project_1/apply.html" class="button" aria-label="Apply for Software Engineer Job Button">
+                        <a href="apply.php" class="button" aria-label="Apply for Software Engineer Job Button">
                             Apply Now
                         </a>
                     </div>
@@ -302,7 +295,7 @@ Accessibility best practices -->
             <div class="cards-container">
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/working-at-home_2800485?related_id=2800485 -->
-                    <img src="/Web_Tech_Project_1/images/hybrid-work.png" alt="A icon of a home and office building" class="icon">
+                    <img src="images/hybrid-work.png" alt="A icon of a home and office building" class="icon">
 
                     <div class="container">
                         <h3>Hybrid Work</h3>
@@ -313,7 +306,7 @@ Accessibility best practices -->
 
                 <div class="card">
                     <!-- https://www.flaticon.com/free-icon/healthcare_2966334?term=health+insurance&page=1&position=2&origin=search&related_id=2966334 -->
-                    <img src="/Web_Tech_Project_1/images/healthcare.png" alt="A icon of a hand holding a heart with a positive sign" class="icon">
+                    <img src="images/healthcare.png" alt="A icon of a hand holding a heart with a positive sign" class="icon">
 
                     <div class="container">
                         <h3>Health Insurance</h3>
@@ -324,7 +317,7 @@ Accessibility best practices -->
                 <!-- Row 2 -->
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/vacation_6016407?term=paid+leave&page=1&position=2&origin=search&related_id=6016407 -->
-                    <img src="/Web_Tech_Project_1/images/paid-leave.png" alt="A icon with a huge money bag on a beach chair with an umbrella" class="icon">
+                    <img src="images/paid-leave.png" alt="A icon with a huge money bag on a beach chair with an umbrella" class="icon">
 
                     <div class="container">
                         <h3>Paid Leave</h3>
@@ -335,7 +328,7 @@ Accessibility best practices -->
 
                 <div class="card">
                     <!-- Image from https://www.flaticon.com/free-icon/customer_18808893?term=employee+discount&page=1&position=1&origin=search&related_id=18808893 -->
-                    <img src="/Web_Tech_Project_1/images/employee.png" alt="A icon of a person with a discount sign" class="icon">
+                    <img src="images/employee.png" alt="A icon of a person with a discount sign" class="icon">
 
                     <div class="container">
                         <h3>Employee Discount</h3>
@@ -348,22 +341,8 @@ Accessibility best practices -->
 
     <hr>
 
-    <!-- Footer design inspired from https://www.youtube.com/watch?v=nkZz9DOBzBI -->
     <footer>
-        <div id="footer-container">
-            <p>Our Socials</p>
-            
-            <div id="footer-navigation" aria-label="Footer Link for this website">
-                <ul>
-                    <li><a href="https://wtp-project.atlassian.net/jira/software/projects/SCRUM/boards/1">Jira</a></li>
-                    <li><a href="https://github.com/104874063/Web_Tech_Project_1">GitHub</a></li>
-                    <li><a href="info@companyname.com">Email</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-        <p>&copy; 2025 Swinburne Government Association. All rights reserved.</p>
+        <?php include 'assets/footer.inc'; ?>
     </footer>
 </body>
 </html>

@@ -23,17 +23,10 @@
     <!-- Navigation bar -->
     <section id="header">
         <header>
-            <div class="logotitle">
-                <a href="#homepage"><img id="logo" src="/Web_Tech_Project_1/images/Logo.png" alt="Logo of the company, Swinburne Government Association" class="logo"></a>
-                <h2>Swinburne Government Association</h2>
-            </div>
+                <?php include 'assets/logo.inc'; ?>
         </header>
         <nav>
-            <ul>
-                <li id="id1"><a id="careeropportunities" href="/Web_Tech_Project_1/jobs.php">Career Opportunities</a></li>
-                <li id="id2"><a id="applications" href="/Web_Tech_Project_1/apply.php">Applications</a></li>
-                <li id="id3"><a id="aboutourteam" href="/Web_Tech_Project_1/index.php">Index</a></li>
-            </ul>
+            <?php include 'assets/header.inc'; ?>
         </nav>
     </section>
         
@@ -41,7 +34,7 @@
         <section id="group-members">
             <div>
                 <h1>Learn about The Team</h1>
-                <img src="/Web_Tech_Project_1/images/group_photo_web.jpg" id="group-photo" alt="">
+                <img src="images/group_photo_web.jpg" id="group-photo" alt="">
                 <p>
                     <!--Grammar improved using ChatGPT -->
                      This page will give you information on the team
@@ -67,7 +60,7 @@
         <section id="joshua" class="profile-section">
             <div class="profile-container">
                 <div class="split" id="joshua-picture">
-                    <img src="/Web_Tech_Project_1/images/joshua.jpg" class="profile-picture" alt="">
+                    <img src="images/joshua.jpg" class="profile-picture" alt="">
                 </div>
                 
                 <div class="split" id="profile-text-1">
@@ -94,7 +87,7 @@
         <section id="daniel" class="profile-section">
             <div class="profile-container">
                 <div class="split" id="daniel-picture">
-                    <img src="/Web_Tech_Project_1/images/daniel.jpg" class="profile-picture" alt="">
+                    <img src="images/daniel.jpg" class="profile-picture" alt="">
                 </div>
                 
                 <div class="split" id="profile-text-2">
@@ -122,7 +115,7 @@
         <section id="bryan" class="profile-section">
             <div class="profile-container">
                 <div class="split" id="bryan-picture">
-                    <img src="/Web_Tech_Project_1/images/bryan.jpg" class="profile-picture" alt="">
+                    <img src="images/bryan.jpg" class="profile-picture" alt="">
                 </div>
 
                 <div class="split" id="profile-text-3">
@@ -180,22 +173,8 @@
     </main>
 
     <hr>
-    <!-- Footer design inspired from https://www.youtube.com/watch?v=nkZz9DOBzBI -->
     <footer>
-        <div id="footer-container">
-            <p>Our Socials</p>
-            
-            <div id="footer-navigation" aria-label="Footer Link for this website">
-                <ul>
-                    <li><a href="https://wtp-project.atlassian.net/jira/software/projects/SCRUM/boards/1">Jira</a></li>
-                    <li><a href="https://github.com/104874063/Web_Tech_Project_1">GitHub</a></li>
-                    <li><a href="info@companyname.com">Email</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-        <p>&copy; 2025 Swinburne Government Association. All rights reserved.</p>
+        <?php include 'assets/footer.inc'; ?>
     </footer>
 </body>
 </html>
