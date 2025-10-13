@@ -30,9 +30,9 @@
             </header>
             <nav>
                 <ul>
-                    <li id="id1"><a id="careeropportunities" href="/Web_Tech_Project_1/jobs.html">Career Opportunities</a></li>
-                    <li id="id2"><a id="applications" href="/Web_Tech_Project_1/apply.html">Applications</a></li>
-                    <li id="id3"><a id="aboutourteam" href="/Web_Tech_Project_1/about.html">About our team</a></li>
+                    <li id="id1"><a id="careeropportunities" href="/Web_Tech_Project_1/jobs.php">Career Opportunities</a></li>
+                    <li id="id2"><a id="applications" href="/Web_Tech_Project_1/apply.php">Applications</a></li>
+                    <li id="id3"><a id="aboutourteam" href="/Web_Tech_Project_1/about.php">About our team</a></li>
                 </ul>
             </nav>
         </section>
