@@ -1,3 +1,8 @@
+<?php
+    require_once("./assets/function/about_card.php");
+    require_once("./assets/database/settings.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +28,10 @@
     <!-- Navigation bar -->
     <section id="header">
         <header>
-                <?php include 'assets/logo.inc'; ?>
+                <?php include 'assets/ui/logo.inc'; ?>
         </header>
         <nav>
-            <?php include 'assets/header.inc'; ?>
+            <?php include 'assets/ui/header.inc'; ?>
         </nav>
     </section>
         
@@ -57,90 +62,30 @@
         </section>
 
         <!-- Split inspired from https://www.w3schools.com/howto/howto_css_split_screen.asp -->
-        <section id="joshua" class="profile-section">
-            <div class="profile-container">
-                <div class="split" id="joshua-picture">
-                    <img src="images/joshua.jpg" class="profile-picture" alt="">
-                </div>
-                
-                <div class="split" id="profile-text-1">
-                    <h2>I'm Joshua! Pleasure to Meet You</h2>
-                    <h3>I am currently a professional software tester and am looking to become a developer</h3>
-                    <dl>
-                        <dt>Details</dt>
-                            <dd>Age: 22</dd>
-                            <dd>Date of Birth: 11 October 2002</dd>
-                            <dd>First Language: English</dd>
-                            <dd>Nationality: Australian</dd>
-                            <dd>Current Course: Bachelor of Computer Science</dd>
-                            <dd>Year of Study: Year 2 - Semester 1</dd>
-                        <dt>Contribution:</dt>
-                            <dd>Responsible for developing the apply.html page</dt>
-                            <dd>Helped the group by setting up the GitHub Repository</dd>
-                            <dd>Did researched on responsive design practices</dd>
-                            <dd>Assisted in Jira with Bryan</dd>
-                    </dl>
-                </div>
-            </div>
-        </section>
-
-        <section id="daniel" class="profile-section">
-            <div class="profile-container">
-                <div class="split" id="daniel-picture">
-                    <img src="images/daniel.jpg" class="profile-picture" alt="">
-                </div>
-                
-                <div class="split" id="profile-text-2">
-                    <h2>Hey there, I'm Daniel</h2>
-                    <h3>
-                        I am currently an undergraduate computer science student majoring in data science
-                    </h3>
-                    <dl>
-                        <dt>Details</dt>
-                            <dd>Age: 20</dd>
-                            <dd>Date of Birth: 10 November 2004</dd>
-                            <dd>First Language: Engddsh</dd>
-                            <dd>Nationaddty: Austraddan</dd>
-                            <dd>Current Course: Bachelor of Computer Science</dd>
-                            <dd>Year of Study: Year 1 - Semester 1</dd>
-                        <dt>Contribution</dt>
-                            <dd>Responsible for developing the index.html page</dd>
-                            <dd>Did researched on best practice for accessibility</dd>
-                            <dd>Developed the website navigation bar</dd>
-                    </dl>
-                </div>
-            </div>
-        </section>
-
-        <section id="bryan" class="profile-section">
-            <div class="profile-container">
-                <div class="split" id="bryan-picture">
-                    <img src="images/bryan.jpg" class="profile-picture" alt="">
-                </div>
-
-                <div class="split" id="profile-text-3">
-                    <h2>Nice to meet you, I'm Bryan</h2>
-                    <h3>
-                        I am currently a student at Swinburne University doing my Bachelors
-                    </h3>
-                    <dl>
-                        <dt>Details</dt>
-                            <dd>Age: 26</dd>
-                            <dd>Date of Birth: 11 June 1999</dd>
-                            <dd>First Language: Engddsh</dd>
-                            <dd>Nationaddty: Malaysian</dd>
-                            <dd>Current Course: Bachelor of Computer Science</dd>
-                            <dd>Year of Study: Year 1 - Semester 1</dd>
-                        <dt>Contribution:</dt>
-                            <dd>Responsible for developing the jobs.html page</dd>
-                            <dd>Responsible for developing the about.html page</dd>
-                            <dd>Assisted in Jira with Joshua</dd>
-                            <dd>Developed the website Footer</dd>
-                    </dl>
-                </div>
-            </div>
-            
-        </section>
+        <?php 
+            if ($conn) {
+                $query = "SELECT * FROM about";
+                $result = mysqli_query($conn, $query);
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        about_card(
+                            $row['about_id'],
+                            $row['name'],
+                            $row['description'],
+                            $row['age'],
+                            $row['date_of_birth'],
+                            $row['first_language'],
+                            $row['nationality'],
+                            $row['course'],
+                            $row['year_of_study'],
+                            $row['contribution_part_1'],
+                            $row['contribution_part_2'],
+                            $row['profile_picture']);
+                    }
+                }
+            }
+            mysqli_close($conn);
+            ?>
 
         <section id="fun-facts">
             <h2>Quick Fun Facts About Us</h2>
@@ -169,12 +114,35 @@
                 </tr>
             </table>
 
+            <?php 
+                // if ($conn) {
+                //     $query = "SELECT * FROM about";
+                //     $result = mysqli_query($conn, $query);
+                //     if (mysqli_num_rows($result) > 0) {
+                //         echo "<table id='facts-table'>";
+                //         while ($row = mysqli_fetch_assoc($result)) {
+                //             $fun_facts = explode("|", $row['fun_facts']);
+                //             echo "<tr>";
+                //             echo "<th>" . $row['name'] . "</th>";
+                //             echo "</tr>";
+                //             echo "<tr>";
+                //             foreach ($fun_facts as $fun) {
+                //                 echo "<td>" . trim($fun) . "</td>";
+                //             }
+                //             echo "</tr>";
+                //         }
+                //         echo "</table>";
+                //     }
+                // }
+            // mysqli_close($conn);
+            ?>
+
         </section>
     </main>
 
     <hr>
     <footer>
-        <?php include 'assets/footer.inc'; ?>
+        <?php include 'assets/ui/footer.inc'; ?>
     </footer>
 </body>
 </html>

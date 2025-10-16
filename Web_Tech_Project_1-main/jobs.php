@@ -1,3 +1,8 @@
+<?php
+    require_once("./assets/function/job_desc_card.php");
+    require_once("./assets/database/settings.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,12 @@
      <link rel="stylesheet" href="css/colour.css">
      <link rel="stylesheet" href="css/typographic.css">
     
-    
+     <!-- Embedded CSS style -->
+    <style>
+        h1, h2, h3, h4, p, li, a {
+        font-family: 'Arial', sans-serif;
+    }
+    </style>
     <title>Jobs</title>
 </head>
 
@@ -25,17 +35,16 @@ Accessibility best practices -->
 <!-- jobs.html: <aside> styled at 25% width, floated right, with border, margin, padding. -->
 
 
-    <!-- i was here -->
 <body>
     <header>
         <!-- Navigation bar -->
         
         <section id="header">
             <header>
-                <?php include 'assets/logo.inc'; ?>
+                <?php include 'assets/ui/logo.inc'; ?>
             </header>
             <nav>
-                <?php include 'assets/header.inc'; ?>
+                <?php include 'assets/ui/header.inc'; ?>
             </nav>
         </section>
         
@@ -159,127 +168,30 @@ Accessibility best practices -->
                 </p>
             </div>
 
-            <!-- Card structure used from https://www.w3schools.com/howto/howto_css_cards.asp -->
-            <!-- Row 1 -->
             <div class="cards-container">
-                <div class="card" id="job-card-1">
-                    <div class="container">
-                        <!-- Job Title -->
-                        <h3>Data Analyst - Ref No:SG123</h3>
-                        <!-- Job Description -->
-                        <h4>Job Description</h4>
-                        <!-- Grammar improved and summarized using ChatGPT -->
-                        <p>
-                            As a Data Analyst you will be responsible for collecting data that is incomplete or corrupt and using it to fix the problem
-                            at its source. As a data analyst you will also be responsible for using the data to find bottle necks in the system and using that data to resolve 
-                            bottle necks. Within your role you will be required to be able to communicate between both the technical team as well as the business team
-                            
-                        </p>
-                        <!-- Reporting Line -->
-                        <h4>Reporting Line</h4>
-                        <ul>
-                            <li>Data Analytics Manager</li>
-                            <li>Data Science Manager</li>
-                            <li>Chief Data Officer (CDO)</li>
-                        </ul>
-                        <!-- Location -->
-                        <h4>Location</h4>
-                        <p>Hawthorne, Victoria</p>
-                        <!-- Key Responsibility -->
-                        <h4>Key Responsibility</h4>
-                            <ol>
-                                <li>Collecting and cleaning data to ensure accuracy and consistency.</li>
-                                <li>Analyze large amount of datasets to identify trends, patterns and anomalies to improve business decisions.</li>
-                                <li>Develop and maintain reports and dashboards to keep track of business metrics.</li>
-                                <li>Ensure data quality by identifying and addressing any issues from the datasets.</li>
-                            </ol>
-                        <!-- Qualification -->
-                        <h4>Qualification</h4>
-                        <ul>
-                            <li>Bachelor's degree in Data Science, Statistics, Computer Science or a related field.</li>
-                            <li>Basic understanding of statistical and data modeling.</li>
-                            <li>Strong analytic skills to interpret complex data and provide meaningful insights.</li>
-                        </ul>
-                        
-                        <!-- Software Experience -->
-                        <h4>Software Experience</h4>
-                        <ul>
-                            <li>Experience with SQL and database management systems.</li>
-                            <li>Experience with data visualization tools such as Excel, SAS Studio, Tableau, PowerBI.</li>
-                            <li>Experience with data analytic tools such as R Studio, Python.</li>
-                        </ul>
-                        <!-- Salary -->
-                        <h4>Salary</h4>
-                        <p>$90,000 - $100,000</p>
-
-                        <!-- Button -->
-                        <a href="apply.php" class="button" aria-label="Apply for Data Analyst Job Button">
-                            Apply Now
-                        </a>
-                        
-                    </div>
-                </div>
-
-                <div class="card" id="job-card-2">
-                    <div class="container">
-                        <!-- Job Title -->
-                        <h3>Software Engineer - Ref No:SG777</h3>
-                        <!-- Job Description -->
-                        <h4>Job Description</h4>
-                        <!-- Grammar improved and summarized using ChatGPT -->
-                        <p>
-                            As a Software Engineer you will be required to develop solutions using existing architecture. You should also be able to develop and design new systems and architecture.
-                            You must be able to test your system and narrow down where bugs are occuring and be able to resolve bugs. You will also be required to create technical documentation for the 
-                            technical team as well as be able to create design documentation which should be understandable by the business side of the team.
-                            
-                
-                        </p>
-                        <!-- Reporting Line -->
-                        <h4>Reporting Line</h4>
-                        <ul>
-                            <li>Engineering Manager</li>
-                            <li>Team Lead</li>
-                            <li>Chief Technology Officer (CTO)</li>
-                        </ul>
-                        <!-- Location -->
-                        <h4>Location</h4>
-                        <p>Hawthorne, Victoria</p>
-                        
-                        <!-- Key Responsibility -->
-                        <h4>Key Responsibility</h4>
-                        <ol>
-                            <li>Design, develop and maintain the company software applications.</li>
-                            <li>Build and optimize data pipelines to ensure seamless flow of data between systems.</li>
-                            <li>Collaborate with other teams to implement technical solutions that enable better business decisions.</li>
-                            <li>Troubleshoot and resolve any issues related to software performance, bugs and data integration.</li>
-                        </ol>
-                        <!-- Qualification -->
-                        <h4>Qualification</h4>
-                        <ul>
-                            <li>Bachelor's/Master's Degree in Computer Science, Software Engineering, or a related field.</li>
-                            <li>Strong understanding of algorithms and data structures.</li>
-                            <li>Knowledge of software development methodologies, such as Agile, Scrum, or Waterfall.</li>
-                        </ul>
-                        
-                        <!-- Software Experience -->
-                        <h4>Software Experience</h4>
-                        <ul>
-                            <!-- Assisted with ChatGPT -->
-                            <li><strong>Application Development:</strong> Experience in building and maintaining applications for both desktop and web platforms.</li>
-                            <li><strong>Frontend Development:</strong> Proficient in HTML, CSS, JavaScript, and modern front-end frameworks like React, Angular, or Vue.js.</li>
-                            <li><strong>Backend Development:</strong> Experience with server-side programming languages like Node.js, Python, Ruby, or Java, and frameworks like Django or Express.</li>
-                        </ul>
-
-                        <!-- Salary -->
-                        <h4>Salary</h4>
-                        <p>$90,000 - $100,000</p>
-
-                        <!-- Button -->
-                        <a href="apply.php" class="button" aria-label="Apply for Software Engineer Job Button">
-                            Apply Now
-                        </a>
-                    </div>
-                </div>
+                <?php 
+                if ($conn) {
+                    $query = "SELECT * FROM jobs";
+                    $result = mysqli_query($conn, $query);
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            job_card(
+                                $row['job_id'],
+                                $row['role'],
+                                $row['reference_number'],
+                                $row['description'],
+                                $row['reporting_line'],
+                                $row['location'],
+                                $row['responsibilities'],
+                                $row['qualification'],
+                                $row['software_experience'],
+                                $row['salary_min'],
+                                $row['salary_max']);
+                        }
+                    }
+                }
+                mysqli_close($conn);
+                ?>
             </div>
         </section>
 
@@ -342,7 +254,7 @@ Accessibility best practices -->
     <hr>
 
     <footer>
-        <?php include 'assets/footer.inc'; ?>
+        <?php include 'assets/ui/footer.inc'; ?>
     </footer>
 </body>
 </html>

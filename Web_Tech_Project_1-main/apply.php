@@ -28,10 +28,10 @@
 
         <section id="header">
             <header>
-                <?php include 'assets/logo.inc'; ?>
+                <?php include 'assets/ui/logo.inc'; ?>
             </header>
             <nav>
-                <?php include 'assets/header.inc'; ?>
+                <?php include 'assets/ui/header.inc'; ?>
             </nav>
         </section>
 
@@ -134,7 +134,7 @@
     </form>
 
     <footer>
-        <?php include 'assets/footer.inc'; ?>
+        <?php include 'assets/ui/footer.inc'; ?>
     </footer>
 </body>
 </html>
