@@ -28,17 +28,10 @@
 
         <section id="header">
             <header>
-                <div class="logotitle">
-                    <a href="#homepage"><img id="logo" src="/Web_Tech_Project_1/images/Logo.png" alt="Logo of the company, Swinburne Government Association" class="logo"></a>
-                    <h2>Swinburne Government Association</h2>
-                </div>
+                <?php include 'assets/ui/logo.inc'; ?>
             </header>
             <nav>
-                <ul>
-                    <li id="id1"><a id="careeropportunities" href="/Web_Tech_Project_1/jobs.html">Career Opportunities</a></li>
-                    <li id="id2"><a id="applications" href="/Web_Tech_Project_1/index.html">Index</a></li>
-                    <li id="id3"><a id="aboutourteam" href="/Web_Tech_Project_1/about.html">About our team</a></li>
-                </ul>
+                <?php include 'assets/ui/header.inc'; ?>
             </nav>
         </section>
 
@@ -140,22 +133,8 @@
 
     </form>
 
-    <!-- Footer design inspired from https://www.youtube.com/watch?v=nkZz9DOBzBI -->
     <footer>
-        <div id="footer-container">
-            <p>Our Socials</p>
-            
-            <div id="footer-navigation" aria-label="Footer Link for this website">
-                <ul>
-                    <li><a href="https://wtp-project.atlassian.net/jira/software/projects/SCRUM/boards/1">Jira</a></li>
-                    <li><a href="https://github.com/104874063/Web_Tech_Project_1">GitHub</a></li>
-                    <li><a href="info@companyname.com">Email</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <hr>
-        <p>&copy; 2025 Swinburne Government Association. All rights reserved.</p>
+        <?php include 'assets/ui/footer.inc'; ?>
     </footer>
 </body>
 </html>
