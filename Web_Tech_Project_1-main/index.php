@@ -12,6 +12,8 @@
        <link rel="stylesheet" href="css/typographic.css">
 
         <!-- Embedded CSS style -->
+
+        <!-- Hello World-->
     <style>
         h1, h2, h3, h4, p, li, a {
         font-family: 'Arial', sans-serif;
