@@ -1,6 +1,7 @@
 <?php
     require_once("./assets/function/about_card.php");
     require_once("./assets/database/settings.php");
+    
 ?>
 
 <!DOCTYPE html>
@@ -63,6 +64,7 @@
 
         <!-- Split inspired from https://www.w3schools.com/howto/howto_css_split_screen.asp -->
         <?php 
+        $conn = mysqli_connect ($host,$user,$pwd,$sql_db);
             if ($conn) {
                 $query = "SELECT * FROM about";
                 $result = mysqli_query($conn, $query);
