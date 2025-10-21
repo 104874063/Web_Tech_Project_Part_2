@@ -1,3 +1,123 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+$error = [];
+$values = [];
+
+ function santise_form($formdata) {
+        $formdata = trim($formdata);
+        $formdata = stripslashes($formdata);
+        $formdata = htmlspecialchars($formdata);
+
+        return $formdata;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+
+
+ }
+ $fields = [
+    'job_ref_number', 'firstname', 'lastname', 'dob', 'gender', 'streetaddress', 'suburb_town', 'state', 'postcode', 'user_email', 'phonenumber', 'skill', 'additionalskills'
+ ];
+ foreach($fields as $f) $values[$f] = isset($_POST[$f]) ? santise_form($_POST[$f]) : '';
+ 
+ if (!preg_match("/^[A-Za-z0-9]{5}$/", $values['job_ref_number'])) $errors['job_ref_number']= "Job reference number must be 5 alphanumeric characters";
+    
+
+        if ($values['firstname'] === '')
+    
+
+            $errors['firstname'] = "First Name is required";
+        
+        elseif (!preg_match("/^[A-Za-z]{1,20}$/", $values['firstname'])) 
+            
+            $errors['firstname'] = "First Name must be only letters";
+        
+        
+        //strlen was inspired by https://www.php.net/manual/en/function.strlen.php
+        
+        if ($values['lastname'] === '')
+    
+
+            $errors['lastname'] = "Last Name is required";
+        
+        elseif (!preg_match("/^[A-Za-z]{1,20}$/", $values['lastname'])) 
+            
+            $errors['lastname'] = "Last Name must be only letters";
+
+    
+
+        if ($values ['dob'] === '') 
+            $errors['dob'] = "Date Of Birth is required";
+        
+
+        if(empty($_POST['gender'])) {
+            $errors['gender'] = "Please select a gender";
+        }
+        else {
+            $values['gender'] = $_POST['gender'];
+        }
+
+        
+
+        if ($values['streetaddress'] === '')
+    
+
+            $errors['streetaddress'] = "street address is required";
+        
+        elseif (!preg_match("/^[A-Za-z0-9\s]{1,40}$/", $values['streetaddress'])) 
+            
+            $errors['streetaddress'] = "street address must be only letters and can not be empty or more then 40 characters";
+
+
+        if ($values['suburb_town'] === '')
+    
+
+            $errors['suburb_town'] = "suburb/town is required";
+        
+        elseif (!preg_match("/^[A-Za-z\s]{1,40}$/", $values['suburb_town'])) 
+            
+            $errors['suburb_town'] = "suburb  must be only letters and can not be empty or more then 40 characters";
+
+
+        $validated_states = ["vic", "nsw", "qld", "nt", "wa", "sa", "tas", "act"];
+
+        if (!in_array(strtolower($values ['state']), $validated_states)) {
+            $errors['state'] = "Please select a valid state";
+        }
+
+        if (!preg_match("/^[0-9]{4}$/", $values['postcode']))
+        {
+            $errors['postcode'] = "Post code must be exactly 4 digits long with no letters";
+        }
+
+
+        if(!filter_var($values ['user_email'], FILTER_VALIDATE_EMAIL)) 
+        {
+            $errors['user_email'] = "Invalid email";
+        }
+
+        if(!preg_match("/^[0-9]{8,12}$/", $values['phonenumber']))
+        {
+            $errors['phonenumber'] = "Phone number needs to be 8-12 digits long.";
+        }
+
+        if(empty($errors))
+    {
+        $_SESSION['form_data'] = $values;
+        header("Location: process_eoi.php");
+        exit;
+    }
+
+    
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -15,7 +135,12 @@
     <style>
         h1, h2, h3, h4, p, li, a {
         font-family: 'Arial', sans-serif;
-    }
+        }
+        .error {color:red; margin:2px 0; font-size:0.9em;}
+        input[type=text], input[type=email], input[type=number], input[type=date], select{border:1px solid}
+input.error-border {border:2px solid red; }
+    
+
     </style>
 
     <title>Job Application Form</title>
@@ -42,20 +167,38 @@
 
 
 
-    <form class="application-form" action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+    <form class="application-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+
         <fieldset>
             <legend>Your Details</legend>
             <label for="job_ref_number">Job Reference Number</label>
-            <input type="text" id="job_ref_number" name="job_ref_number" pattern="\d{5}" title="Must input 5 digits" maxlength="5" required>
+            <br>
+            <?php if(isset($errors['job_ref_number'])) echo "<p class='error'>{$errors['job_ref_number']}</p>"; ?>
+            <br>
+            <input type="text" id="job_ref_number" name="job_ref_number" class="<?php echo isset($errors['job_ref_number'])?'error-border':'';?>" value="<?php echo $values['job_ref_number']??''; ?>">
+
             <br>
             <label for="firstname">First Name</label>
-            <input type="text" id="firstname" name="firstname" pattern="[A-Za-z]+" maxlength="20" required>
+            <br>
+            <?php if(isset($errors['firstname'])) echo "<p class='error'>{$errors['firstname']}</p>"; ?>
+
+            <input type="text" id="firstname" name="firstname" class="<?php echo isset($errors['firstname'])?'error-border':'';?>" value="<?php echo $values['firstname']??''; ?>">
 
             <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="lastname" pattern="[A-Za-z]+" maxlength="20" required>
+            <br>
+            <?php if(isset($errors['lastname'])) echo "<p class='error'>{$errors['lastname']}</p>"; ?>
+            <input type="text" id="lastname" name="lastname" class="<?php echo isset($errors['lastname'])?'error-border':'';?>" value="<?php echo $values['lastname']??''; ?>">
+            <br>
+
 
             <label for="dob">Date Of Birth</label>
-            <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\d{4}$" required>
+            <br>
+
+            <?php if(isset($errors['dob'])) echo "<p class='error'>{$errors['dob']}</p>"; ?>
+
+            <input type="date" id="dob" name="dob" placeholder="dd/mm/yyyy" class="<?php echo isset ($errors['dob'])?'error-border':'';?>" value="<?php echo $values['dob']??''; ?>">
+            <br>
+
 
 
 
@@ -67,8 +210,9 @@
         <br>
         <fieldset>
             <legend>Gender</legend>
-            <label><input type="radio" name="gender" value="Male" required> Male </label>
-            <label><input type="radio" name="gender" value="Female"> Female </label>
+            <?php if(isset($errors['gender'])) echo "<p class='error'>{$errors['gender']}</p>"; ?>
+            <label><input type="radio" name="gender" value="Male" <?php if(($values['gender']??'')=='Male') echo 'checked';?>> Male </label>
+            <label><input type="radio" name="gender" value="Female" <?php if(($values['gender']??'')=='Female') echo 'checked';?>> Female </label>
 
             <br>
 
@@ -77,40 +221,58 @@
         <fieldset>
             <legend>Further details</legend>
              <label for="streetaddress">Street Address</label>
-            <input type="text" id="streetaddress" name="streetaddress" pattern="[A-Za-z0-9\s]+" maxlength="40">
+              <?php if(isset($errors['streetaddress'])) echo "<p class='error'>{$errors['streetaddress']}</p>"; ?>
+
+            <input type="text" id="streetaddress" name="streetaddress" class="<?php echo isset($errors['streetaddress'])?'error-border':'';?>" value="<?php echo $values['streetaddress']??''; ?>">
+             
             
             <label for="suburb_town">Suburb/Town</label>
-            <input type="text" id="suburb_town" name="suburb_town" pattern="[A-Za-z\s]+" maxlength="40" required>
+            <?php if(isset($errors['suburb_town'])) echo "<p class='error'>{$errors['suburb_town']}</p>"; ?>
+            <input type="text" id="suburb_town" name="suburb_town" class="<?php echo isset($errors['suburb_town'])?'error-border':'';?>" value="<?php echo $values['suburb_town']??''; ?>">
+             
             <br>
             <label for="state">State</label>
-            <select name="state" id="state" required>
+            <br>
+            <?php if(isset($errors['state'])) echo "<p class='error'>{$errors['state']}</p>"; ?>
+
+            <select name="state" id="state" class="<?php echo isset($errors['state'])?'error-border':'';?>">
                 <option value="">Please Select</option>
-                <option value="vic">VIC</option>
-                <option value="nsw">NSW</option>
-                <option value="qld">QLD</option>
-                <option value="nt">NT</option>
-                <option value="wa">WA</option>
-                <option value="sa">SA</option>
-                <option value="tas">TAS</option>
-                <option value="act">ACT</option>
+                <?php 
+                foreach(['VIC', 'NSW', 'QLD', 'NT', 'WA', 'SA', 'TAS', 'ACT'] as $s) {
+                    $sel = (strtolower($s)==($values['state']??'')) ? 'selected' : '';
+                    echo "<option value='".strtolower($s)."' $sel>$s</option>";
+                }
+                ?>
+             <!--      <option value="vic">VIC</option> -->
+                <!--   <option value="nsw">NSW</option> -->
+             <!--      <option value="qld">QLD</option> -->
+             <!--      <option value="nt">NT</option> -->
+            <!--       <option value="wa">WA</option> -->
+           <!--        <option value="sa">SA</option> -->
+            <!--       <option value="tas">TAS</option> -->
+        <!--        <option value="act">ACT</option> -->
 
             </select>
             <br>
             <label for="postcode">Postcode</label>
-            <input type="number" id="postcode" name="postcode" pattern="[0-9]+" minlength="4" maxlength="4" required>
+            <?php if(isset($errors['postcode'])) echo "<p class='error'>{$errors['postcode']}</p>"; ?>
+            <input type="number" id="postcode" name="postcode" class="<?php echo isset($errors['postcode'])?'error-border':'';?>" value="<?php echo $values['postcode']??''; ?>"> 
+
             <br>
             <label for="user_email">Email</label>
-            <input type="email" id="user_email" name="user_email" required>
+            <?php if(isset($errors['user_email'])) echo "<p class='error'>{$errors['user_email']}</p>"; ?>
+
+            <input type="email" id="user_email" name="user_email" class="<?php echo isset($errors['user_email'])?'error-border':'';?>" value="<?php echo $values['user_email']??''; ?>">
+        
 
             <br>
             <label for="phonenumber">Phone Number</label>
-            <input type="number" id="phonenumber" name="phonenumber" pattern="[0-9]+" minlength="8" maxlength="12" required>
+            <?php if(isset($errors['phonenumber'])) echo "<p class='error'>{$errors['phonenumber']}</p>"; ?>
 
-            
-            
+            <input type="number" id="phonenumber" name="phonenumber" class="<?php echo isset($errors['phonenumber'])?'error-border':'';?>" value="<?php echo $values['phonenumber']??''; ?>">
+            <br>
+        
 
-
-            
 
         </fieldset>
         <br>
@@ -128,6 +290,8 @@
         </fieldset>
 
         <br>
+
+        
         <input class="button" type="submit" value="Apply">
         <input class="button" type="reset" value="Clear Form">
 
