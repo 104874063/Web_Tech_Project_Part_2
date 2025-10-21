@@ -1,7 +1,7 @@
 <?php
 // Card
 // Inspiration from https://www.youtube.com/watch?v=eAK8uYtNTy4, 18:00
-function job_card($id,
+function job_card(
               $job_role, 
               $reference, 
               $description, 
@@ -20,7 +20,7 @@ function job_card($id,
 
     $element = "
     <!-- Card structure used from https://www.w3schools.com/howto/howto_css_cards.asp -->
-    <div class='card' id='job-card-$id'>
+    <div class='card' id='job-card'>
                     <div class='container'>
                         <!-- Job Title -->
                         <h3>$job_role - Ref No:$reference</h3>

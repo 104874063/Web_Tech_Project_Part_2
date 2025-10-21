@@ -12,12 +12,12 @@ $values = [];
         $formdata = htmlspecialchars($formdata);
 
         return $formdata;
-
+ }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 
 
- }
+ 
  $fields = [
     'job_ref_number', 'firstname', 'lastname', 'dob', 'gender', 'streetaddress', 'suburb_town', 'state', 'postcode', 'user_email', 'phonenumber', 'skill', 'additionalskills'
  ];
@@ -112,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     
+
 }
 
 
@@ -138,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .error {color:red; margin:2px 0; font-size:0.9em;}
         input[type=text], input[type=email], input[type=number], input[type=date], select{border:1px solid}
-input.error-border {border:2px solid red; }
+        input.error-border {border:2px solid red; } 
     
 
     </style>

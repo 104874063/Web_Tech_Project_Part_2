@@ -170,13 +170,13 @@ Accessibility best practices -->
 
             <div class="cards-container">
                 <?php 
+                $conn = mysqli_connect ($host,$user,$pwd,$sql_db);
                 if ($conn) {
                     $query = "SELECT * FROM jobs";
                     $result = mysqli_query($conn, $query);
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             job_card(
-                                $row['job_id'],
                                 $row['role'],
                                 $row['reference_number'],
                                 $row['description'],
