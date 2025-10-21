@@ -8,8 +8,7 @@
         $host,
         $user,
         $pwd,
-        $sql_db,
-        8080
+        $sql_db
     );
 
 ?>
