@@ -1,5 +1,6 @@
-<ul>
-    <li id="id1"><a id="careeropportunities" href="jobs.php">Career Opportunities</a></li>
-    <li id="id2"><a id="applications" href="apply.php">Applications</a></li>
-    <li id="id3"><a id="aboutourteam" href="about.php">About our team</a></li>
-</ul>
+<div class="logotitle">
+    <a href="index.php">
+        <img id="logo" src="images/Logo.png" alt="Logo of the company, Swinburne Government Association" class="logo">
+    </a>
+    <h2>Swinburne Government Association</h2>
+</div>
