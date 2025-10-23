@@ -1,28 +1,33 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+//Resumes the session
 session_start();
-$error = [];
-$values = [];
 
+
+//declare the values array variable
+$values = [];
+//The function Santises the data
  function santise_form($formdata) {
-        $formdata = trim($formdata);
-        $formdata = stripslashes($formdata);
-        $formdata = htmlspecialchars($formdata);
+        $formdata = trim($formdata); //Removes uneeded white space
+        $formdata = stripslashes($formdata); //Removes escape slashes eg; backslash; it also removes quotation marks and double quotation marks eg; ' " 
+    
+        $formdata = htmlspecialchars($formdata); // converts special characters into html entities
 
         return $formdata;
  }
+//If a Post request was made to the server the following will be run
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 
 
- 
+ //We put the fields of the form into this variable array
  $fields = [
     'job_ref_number', 'firstname', 'lastname', 'dob', 'gender', 'streetaddress', 'suburb_town', 'state', 'postcode', 'user_email', 'phonenumber', 'skill', 'additionalskills'
  ];
+//This will go through the values of each field and santise the data. Please note it will first check if the user posted with a value in the field.
  foreach($fields as $f) $values[$f] = isset($_POST[$f]) ? santise_form($_POST[$f]) : '';
- 
+ //If the value is not a letter or number or is not exactly 5 alphanumeric numbers long a error will appear
  if (!preg_match("/^[A-Za-z0-9]{5}$/", $values['job_ref_number'])) $errors['job_ref_number']= "Job reference number must be 5 alphanumeric characters";
     
 
@@ -83,7 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $validated_states = ["vic", "nsw", "qld", "nt", "wa", "sa", "tas", "act"];
-
+        //if the state field value is not equal to one of the values in validate_states a error will appear
+        //strtolower will make the string a lowercase
         if (!in_array(strtolower($values ['state']), $validated_states)) {
             $errors['state'] = "Please select a valid state";
         }
@@ -103,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         {
             $errors['phonenumber'] = "Phone number needs to be 8-12 digits long.";
         }
-
+        //If there are no errors the values variable will be passed to $_SESSION['form_data'] and the user will be redirected to process_eoi.php which will put the values into the database table
         if(empty($errors))
     {
         $_SESSION['form_data'] = $values;
@@ -131,8 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      <link rel="stylesheet" href="css/layout.css">
      <link rel="stylesheet" href="css/colour.css">
      <link rel="stylesheet" href="css/typographic.css">
-    <!--Hello world-->
-    <!--Josh test world -->
+    
+    
     <style>
         h1, h2, h3, h4, p, li, a {
         font-family: 'Arial', sans-serif;
@@ -154,10 +160,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section id="header">
             <header>
-                <?php include 'assets/ui/logo.inc'; ?>
+                <?php include 'assets/ui/header.inc'; ?>
             </header>
             <nav>
-                <?php include 'assets/ui/header.inc'; ?>
+                <?php include 'assets/ui/nav.inc'; ?>
             </nav>
         </section>
 
@@ -167,20 +173,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br>
 
 
-
+    <!--If the user presses the apply button it will submit the form to itself and the script will run the following post code if ($_SERVER['REQUEST_METHOD'] === 'POST') { -->   
     <form class="application-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
         <fieldset>
             <legend>Your Details</legend>
             <label for="job_ref_number">Job Reference Number</label>
             <br>
-            <?php if(isset($errors['job_ref_number'])) echo "<p class='error'>{$errors['job_ref_number']}</p>"; ?>
+            <!--isset returns true or false -->
+            <!--If there is a error it will return true and trigger the code class= and value= in order to display the error  -->
+            <?php if(isset($errors['job_ref_number'])) echo "<p class='error'>{$errors['job_ref_number']}</p>"; ?> 
             <br>
+            <!--If error is triger a error will be displayed for this field -->
             <input type="text" id="job_ref_number" name="job_ref_number" class="<?php echo isset($errors['job_ref_number'])?'error-border':'';?>" value="<?php echo $values['job_ref_number']??''; ?>">
 
             <br>
             <label for="firstname">First Name</label>
             <br>
+             <!--If there is a error it will return true and trigger the code class= and value= in order to display the error  -->
             <?php if(isset($errors['firstname'])) echo "<p class='error'>{$errors['firstname']}</p>"; ?>
 
             <input type="text" id="firstname" name="firstname" class="<?php echo isset($errors['firstname'])?'error-border':'';?>" value="<?php echo $values['firstname']??''; ?>">

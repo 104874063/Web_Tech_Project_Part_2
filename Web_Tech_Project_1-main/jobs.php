@@ -41,10 +41,10 @@ Accessibility best practices -->
         
         <section id="header">
             <header>
-                <?php include 'assets/ui/logo.inc'; ?>
+                <?php include 'assets/ui/header.inc'; ?>
             </header>
             <nav>
-                <?php include 'assets/ui/header.inc'; ?>
+                 <?php include 'assets/ui/nav.inc'; ?>
             </nav>
         </section>
         
