@@ -89,9 +89,8 @@ function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
             <input type="number" name="eoi_id" placeholder="Enter EOI Number" required>
             <select name="new_status" required>
                 <option value="New">New</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Hired">Hired</option>
-                <option value="Rejected">Rejected</option>
+                <option value="Current">Current</option>
+                <option value="Final">Final</option>
             </select>
             <input type="submit" name="update_status" value="Update">
         </form>
@@ -142,9 +141,10 @@ if (isset($_POST['delete_by_job'])) {
 if (isset($_POST['update_status'])) {
     $eoi_id = (int)$_POST['eoi_id'];
     $new_status = mysqli_real_escape_string($conn, $_POST['new_status']);
-    $query = "UPDATE eoi SET STATUS = '$new_status' WHERE eoi_num = $eoi_id";
+    echo "<p>DEBUG → eoi_id: $eoi_id, new_status: '$new_status'</p>";
+    $query = "UPDATE eoi SET status = '$new_status' WHERE eoi_num = $eoi_id";
     if (mysqli_query($conn, $query)) {
-        echo("Status for EOI ID <b>$eoi_id</b> updated to <b>$newstatus</b>.</p>");
+        echo("Status for EOI ID <b>$eoi_id</b> updated to <b>$new_status</b>.</p>");
     } else {
         echo("<p>Error updating status: " . mysqli_error($conn) . "</p>");
     }
