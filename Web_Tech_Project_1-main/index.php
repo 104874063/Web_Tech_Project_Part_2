@@ -25,10 +25,10 @@
         <!--This <section> contains all content relavent to the header of the home page-->
         <section id="header">
             <header>
-                <?php include 'assets/ui/header.inc'; ?>
+                <?php include 'header.inc'; ?>
             </header>
             <nav>
-                 <?php include 'assets/ui/nav.inc'; ?>
+                 <?php include 'nav.inc'; ?>
             </nav>
         </section>
         <!--This <section> contains all content relevent to the main body of the home page-->
@@ -96,7 +96,7 @@
         </section>
 
         <footer>
-            <?php include 'assets/ui/footer.inc' ?>
+            <?php include 'footer.inc' ?>
         </footer>
     </body>
 </html>

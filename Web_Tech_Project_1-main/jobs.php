@@ -41,10 +41,10 @@ Accessibility best practices -->
         
         <section id="header">
             <header>
-                <?php include 'assets/ui/header.inc'; ?>
+                <?php include 'header.inc'; ?>
             </header>
             <nav>
-                 <?php include 'assets/ui/nav.inc'; ?>
+                 <?php include 'nav.inc'; ?>
             </nav>
         </section>
         
@@ -254,7 +254,7 @@ Accessibility best practices -->
     <hr>
 
     <footer>
-        <?php include 'assets/ui/footer.inc'; ?>
+        <?php include 'footer.inc'; ?>
     </footer>
 </body>
 </html>

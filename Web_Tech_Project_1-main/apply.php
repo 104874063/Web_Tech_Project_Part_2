@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['firstname'] = "First Name must be only letters";
         
         
-        //strlen was inspired by https://www.php.net/manual/en/function.strlen.php
+        
         
         if ($values['lastname'] === '')
     
@@ -160,10 +160,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <section id="header">
             <header>
-                <?php include 'assets/ui/header.inc'; ?>
+                <?php include 'header.inc'; ?>
+
             </header>
             <nav>
-                <?php include 'assets/ui/nav.inc'; ?>
+                <?php include 'nav.inc'; ?>
             </nav>
         </section>
 
@@ -254,14 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo "<option value='".strtolower($s)."' $sel>$s</option>";
                 }
                 ?>
-             <!--      <option value="vic">VIC</option> -->
-                <!--   <option value="nsw">NSW</option> -->
-             <!--      <option value="qld">QLD</option> -->
-             <!--      <option value="nt">NT</option> -->
-            <!--       <option value="wa">WA</option> -->
-           <!--        <option value="sa">SA</option> -->
-            <!--       <option value="tas">TAS</option> -->
-        <!--        <option value="act">ACT</option> -->
+            
 
             </select>
             <br>
@@ -309,7 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <footer>
-        <?php include 'assets/ui/footer.inc'; ?>
+        <?php include 'footer.inc'; ?>
     </footer>
 </body>
 </html>
