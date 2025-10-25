@@ -8,7 +8,7 @@ $conn = mysqli_connect($host, $user, $pwd, $sql_db);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
-
+// password is stored in a hashed format, help assisted wiht generative AI ChatGPT
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
