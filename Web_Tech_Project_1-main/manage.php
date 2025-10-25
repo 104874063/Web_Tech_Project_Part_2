@@ -44,13 +44,50 @@ function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
 
 <!DOCTYPE html>
 <html>
+
     <head>
+        <meta charset="UTF-8">
+    <meta name="description" content="This page is used in order for the user to manage applicants">
+    <meta name="keywords" content="manager, jobs">
+    <meta name="author" content="DC">
+    <!-- External CSS style -->
+     <link rel="stylesheet" href="css/layout.css">
+     <link rel="stylesheet" href="css/colour.css">
+     <link rel="stylesheet" href="css/typographic.css">
+    
+    
+    <style>
+        h1, h2, h3, h4, p, li, a {
+        font-family: 'Arial', sans-serif;
+        }
+        .error {color:red; margin:2px 0; font-size:0.9em;}
+        input[type=text], input[type=email], input[type=number], input[type=date], select{border:1px solid}
+        input.error-border {border:2px solid red; } 
+    
+
+    </style>
         <title>Manage EOIs</title>
     </head>
     <body>
+         <section id="header">
+            <header>
+               <?php include 'header.inc'; ?>
+            </header>
+            <nav>
+                <?php include 'nav.inc'; ?>
+            </nav>
+        </section>
+
+    </header>
+
         <h2>Welcome, <?php echo($_SESSION['username']); ?>!</h2>
         <a href="logout.php">Logout</a>
         <hr>
+        <header>
+        <!--Navigation Bar-->
+
+        
+    <br>
 
         <h3>List All EOIs</h3>
         <form method="post">
@@ -62,26 +99,26 @@ function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
                 <option value="last_name">Last Name</option>
                 <option value="status">Status</option>
             </select>
-            <input type="submit" name="list_all" value="List All">
+            <input class="button" type="submit" name="list_all" value="List All">
         </form>
 
         <h3>List by Job Reference</h3>
         <form method="post">
             <input type="text" name="job_ref" placeholder="Enter Job Reference">
-            <input type="submit" name="list_by_job" value="Search">
+            <input class="button" type="submit" name="list_by_job" value="Search">
         </form>
 
         <h3>List by Applicant Name</h3>
         <form method="post">
             <input type="text" name="first_name" placeholder="First Name">
             <input type="text" name="last_name" placeholder="Last Name">
-            <input type="submit" name="list_by_name" value="Search">
+            <input class="button" type="submit" name="list_by_name" value="Search">
         </form>
 
         <h3>Delete EOIs by Job Reference</h3>
         <form method="post">
             <input type="text" name="delete_job_ref" placeholder="Enter Job Reference" required>
-            <input type="submit" name="delete_by_job" value="Delete">
+            <input class="button" type="submit" name="delete_by_job" value="Delete">
         </form>
 
         <h3>Change EOI status</h3>
@@ -92,8 +129,12 @@ function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
                 <option value="Current">Current</option>
                 <option value="Final">Final</option>
             </select>
-            <input type="submit" name="update_status" value="Update">
+            <input class="button" type="submit" name="update_status" value="Update">
         </form>
+
+        <footer>
+        <?php include 'footer.inc'; ?>
+        </footer>
 
         <hr>
 

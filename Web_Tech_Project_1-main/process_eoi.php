@@ -55,6 +55,7 @@ if(isset($_SESSION['form_data'])) {
     VALUES ( '{$data['job_ref_number']}', '{$data['firstname']}', '{$data['lastname']}', '{$data['dob']}', '{$data['gender']}', '{$data['streetaddress']}', '{$data['suburb_town']}', '{$data['state']}', '{$data['postcode']}', '{$data['user_email']}', '{$data['phonenumber']}', '$skills', '{$data['additionalskills']}' )";
 
     //If the mysqli query was successfuly it will display the data inputted
+   //mysqli_query inspired by https://www.w3schools.com/php/func_mysqli_query.asp
     if(mysqli_query($conn, $sql))
     {
         //Will display the header Application Submitted
@@ -89,7 +90,7 @@ if(isset($_SESSION['form_data'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="This page is a form for a job application at Swinburne Government Association">
+    <meta name="description" content="This page displays the details the applicant submitted">
     <meta name="keywords" content="jobs, tech">
     <meta name="author" content="JM">
     <!-- External CSS style -->
