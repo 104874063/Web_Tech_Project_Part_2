@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['username'])) { // if the user isn't logged in, page is redirected to the login page.
+    header("Location: login.php"); // not able to siply type manage.php into browser address bar
     exit();
 }
 
@@ -12,7 +12,8 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
+// ChatGPT Generative AI used to support this block of code, function was the idea of the generative AI
+function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") { // function created to assist code reuasability
     $query = "SELECT * FROM eoi WHERE $condition ORDER BY $orderBy";
     $result = mysqli_query($conn, $query);
 
@@ -29,7 +30,7 @@ function showEOIs($conn, $condition = "1=1", $orderBy = "eoi_num") {
             <th>Last Name</th>
             <th>Status</th>
         </tr>");
-    while($row = mysqli_fetch_assoc($result)) {
+    while($row = mysqli_fetch_assoc($result)) { // fetching each for of the result set
         echo("<tr>
                 <td>{$row['eoi_num']}</td>
                 <td>{$row['job_reference_number']}</td>
@@ -105,12 +106,15 @@ if (isset($_POST['list_all'])) {
 }
 
 // List by job reference
+// Chat GPT generative AI used to support against XSS attacks
+// real escape string function removes special characters.
 if (isset($_POST['list_by_job'])) {
     $job_ref = mysqli_real_escape_string($conn, $_POST['job_ref']);
     showEOIs($conn, "job_reference_number = '$job_ref'");
 }
 
 // list by applicant name
+// ChatGPT generative AI assisted the development of this block of codecode.
 if (isset($_POST['list_by_name'])) {
     $conditions = [];
     if (!empty($_POST['first_name'])) {
@@ -119,9 +123,9 @@ if (isset($_POST['list_by_name'])) {
     }
     if (!empty($_POST['last_name'])) {
         $last = mysqli_real_escape_string($conn, $_POST['last_name']);
-        $conditions[] = "last_name LIKE '%$last%'";
+        $conditions[] = "last_name LIKE '%$last%'"; // "%" symbols are wildcard characters for partial matches
     }
-
+// implode function is used to concatenate array elements.
     $condition = count($conditions) > 0 ? implode(" AND ", $conditions) : "1=0";
     showEOIs($conn, $condition);
 }
@@ -141,7 +145,6 @@ if (isset($_POST['delete_by_job'])) {
 if (isset($_POST['update_status'])) {
     $eoi_id = (int)$_POST['eoi_id'];
     $new_status = mysqli_real_escape_string($conn, $_POST['new_status']);
-    echo "<p>DEBUG → eoi_id: $eoi_id, new_status: '$new_status'</p>";
     $query = "UPDATE eoi SET status = '$new_status' WHERE eoi_num = $eoi_id";
     if (mysqli_query($conn, $query)) {
         echo("Status for EOI ID <b>$eoi_id</b> updated to <b>$new_status</b>.</p>");

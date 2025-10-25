@@ -19,23 +19,13 @@ if (!$conn) {
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// "?" is a placeholder for a prepared statement. Protects against SQL injection.
-// The query retrieves the stored hashed password for the entered username.
+// "?" is a placeholder for a prepared statement. 
 $sql = "SELECT password_hash FROM users WHERE username = ?";
-
-// Preparing the SQL query for execution. "$stmt" is a statement object ready to have 
-// parameteres bound.
 $stmt = mysqli_prepare($conn, $sql);
-
-
 mysqli_stmt_bind_param($stmt, "s", $username);
-
 mysqli_stmt_execute($stmt);
-
 // Prepares a variable called "$stored_hash" to recieve the result from the query.
-// When we fetch the row, "stored_hash" will hold the password hash from the database.
 mysqli_stmt_bind_result($stmt, $stored_hash);
-
 // This line fetches the first row of the result set. Fetch will result "true" if a row 
 // exists (user found) and will result "false" otherwise.
 if (mysqli_stmt_fetch($stmt)) {
